@@ -1,0 +1,12 @@
+Установка Raspbian_Jessie.
+
+Форматируем sd c помощью SDFormatter.
+Можно скачать тут - https://www.sdcard.org/downloads/formatter_4/
+
+Скачиваем Raspbian Jessie
+Можно скачать тут - https://www.raspberrypi.org/downloads/raspbian/
+
+Распаковываем архив с образом Raspbian Jessie
+
+Записываем образ с помощью Win32 Disk Imager.
+Можно скачать тут - https://sourceforge.net/projects/win32diskimager

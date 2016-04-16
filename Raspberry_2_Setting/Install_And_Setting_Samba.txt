@@ -1,0 +1,32 @@
+﻿Установка Samba.
+sudo apt-get install samba samba-common-bin 
+
+Создаем папку.
+sudo mkdir /home/publicfolder
+
+Устанавливаем права на данную папку.
+sudo chmod 777 /home/publicfolder
+
+Делаем бекап файла настрек.
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup
+
+Редактируем настройки Samba.
+sudo nano /etc/samba/smb.conf
+
+Удаляем все его содержимое и добавляем это:
+[global] 
+workgroup = WORKGROUP 
+netbios name = RaspberryPi 
+server string = share 
+security = user 
+map to guest = bad user 
+browseable = yes
+
+[publicfolder] 
+path = /home/publicfolder 
+writeable = yes 
+browseable = yes 
+guest ok = yes
+
+Перезагрузка.
+sudo reboot

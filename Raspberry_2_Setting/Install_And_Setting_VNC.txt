@@ -1,0 +1,15 @@
+﻿Устанавливаем VNC.
+sudo apt-get install tightvncserver
+
+Настраиваем VNC.
+sudo tightvncserver
+Выбираем пароль, можем установить пароль ReadOnly.
+
+Перезагрузка.
+sudo reboot
+
+Запускаем.
+sudo vncserver :1 -geometry 1366x768 -depth 24
+
+Если не используется монитор, можно отключить дисплейный менеджер, тем самым уменьшить нагрузку на Raspberry.
+sudo service lightdm stop

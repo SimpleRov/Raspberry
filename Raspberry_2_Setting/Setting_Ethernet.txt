@@ -1,0 +1,21 @@
+Настройка локальной сети.
+
+Делаем бекап файла настроек.
+sudo cp /etc/network/interfaces /etc/network/interfaces.backup
+
+Открываем файл настроек сетевых интерфейсов.
+sudo nano /etc/network/interfaces
+
+Меняем
+iface eth0 inet dhcp или iface eth0 inet manual
+
+На
+iface eth0 inet static
+
+Добавляем после этой строки
+address 192.168.1.102 
+netmask 255.255.255.0 
+gateway 192.168.1.1
+
+Перезагрузка.
+sudo reboot

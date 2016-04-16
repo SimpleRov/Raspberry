@@ -1,0 +1,38 @@
+﻿Установка mjpg-streamer.
+
+Устанавливаем необходимые пакеты 
+sudo apt-get install libjpeg-dev
+sudo apt-get install cmake
+
+Устанавливаем mjpg-streamer.
+sudo git clone https://github.com/jacksonliam/mjpg-streamer.git ~/mjpg-streamer
+cd ~/mjpg-streamer/mjpg-streamer-experimental
+sudo make
+sudo mv ~/mjpg-streamer/mjpg-streamer-experimental /opt/mjpg-streamer
+
+Запуск
+LD_LIBRARY_PATH=/opt/mjpg-streamer/ /opt/mjpg-streamer/mjpg_streamer -i "input_raspicam.so -fps 25 -q 10 -x 1920 -y 1080" -o "output_http.so -p 9000 -w /opt/mjpg-streamer/www"
+
+Скрипт старта
+start_stream.sh
+#!/bin/bash
+ 
+if pgrep mjpg_streamer > /dev/null
+then
+  echo "mjpg_streamer already running"
+else
+  LD_LIBRARY_PATH=/opt/mjpg-streamer/ /opt/mjpg-streamer/mjpg_streamer -i "input_raspicam.so -fps 25 -q 10 -x 1920 -y 1080" -o "output_http.so -p 9000 -w /opt/mjpg-streamer/www"
+  echo "mjpg_streamer started"
+fi
+
+Скрипт стоп
+stop_stream.sh
+#!/bin/bash
+ 
+if pgrep mjpg_streamer
+then
+  kill $(pgrep mjpg_streamer) > /dev/null 2>&1
+  echo "mjpg_streamer stopped"
+else
+  echo "mjpg_streamer not running"
+fi
