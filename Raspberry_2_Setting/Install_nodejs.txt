@@ -1,0 +1,12 @@
+﻿Установка nodejs.
+
+Добавляем новый репозиторий пакетов и обновляет наш репозиторий пакетов.
+sudo curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
+Устанавливаем nodejs.
+sudo apt-get install nodejs
+
+Проверяем установку.
+node -v
+npm -V
+
