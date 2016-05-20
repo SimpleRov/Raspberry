@@ -1,0 +1,29 @@
+﻿Включаем поддержку Serial.
+Запуск программы настройки системы.
+sudo raspi-config
+
+Выбираем пункт.
+9 Advanced Options
+
+Далее выбираем пункт.
+A8 Serial
+
+Выключаем Serial.
+No
+
+Возвращаемся в начальное меню и нажимаем Finish.
+
+Соглашаемся на перезагрузку или перезагружаем позже.
+Перезагрузка.
+sudo reboot
+
+Делаем бекап файла настрек.
+sudo cp /boot/cmdline.txt /boot/cmdline.bak
+
+Открываем файл /boot/cmdline.txt.
+sudo nano /boot/cmdline.txt
+
+Удаляем строки “console=ttyAMA0,115200” и “kgdboc=ttyAMA0,115200” в файле /boot/cmdline.txt.
+
+Перезагрузка.
+sudo reboot
