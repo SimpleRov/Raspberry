@@ -1,0 +1,32 @@
+﻿Отключить HDMI
+tvservice -o
+
+
+Включить HDMI
+tvservice -p
+
+
+Отключить спящий режим экрана
+Открываем файл /etc/lightdm/lightdm.conf
+sudo nano /etc/lightdm/lightdm.conf
+
+Добавьте следующие строки в /etc/lightdm/lightdm.conf, в секции [SeatDefaults].
+# don't sleep the screen
+xserver-command=X -s 0 dpms
+
+
+Отключить LED
+Делаем бекап файла настрек.
+sudo cp /boot/config.txt /boot/config.bak
+
+Открываем файл /boot/config.txt.
+sudo nano /boot/config.txt
+
+Добавьте следующие строки в /boot/config.txt:
+# Disable the ACT LED.
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+
+# Disable the PWR LED.
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
